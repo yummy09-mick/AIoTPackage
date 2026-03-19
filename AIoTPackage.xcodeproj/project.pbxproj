@@ -37,6 +37,7 @@
 				Model/ResidentModel.swift,
 				StyleGuide/Color.swift,
 				ViewModel/AuthViewModel.swift,
+				ViewModel/PackageViewModel.swift,
 			);
 			target = DF84F55A2F643BCA00D97BE7 /* AIoTPackageManager */;
 		};

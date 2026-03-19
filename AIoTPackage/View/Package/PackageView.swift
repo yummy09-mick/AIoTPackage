@@ -61,6 +61,7 @@ struct PackageView: View {
 
 #Preview {
     PackageView()
+        .environment(PackageViewModel())
 }
 
 // MARK: - Segment Control viewModel
@@ -83,9 +84,9 @@ enum PackageSegment: CaseIterable{
         case .ToBePicked:
             return AnyView(PackagePickList().padding(.top, 40))
         case .Received:
-            return AnyView(ReceivedView())
+            return AnyView(ReceivedView().padding(.top, 40))
         case .Returned:
-            return AnyView(ReturnedView())
+            return AnyView(ReturnedView().padding(.top, 40))
         }
     }
 }
