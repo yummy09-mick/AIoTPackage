@@ -21,17 +21,6 @@ struct PackageRowDetail: View {
                         .font(.title3).fontWeight(.semibold)
                 }
                 Spacer()
-                HStack(spacing: 4){
-                    Circle()
-                        .frame(width: 8)
-                    Text("待領取")
-                }
-                .foregroundStyle(Colors.mainColor)
-                .padding(8)
-                .background{
-                    Capsule()
-                        .foregroundStyle(Colors.mainColor.opacity(0.1))
-                }
                 
             }
             Divider()
@@ -83,19 +72,6 @@ struct PackageRowDetail: View {
                     Spacer()
                 }
             }
-            Button {
-                // action
-            } label: {
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .fill(Colors.mainColor)
-                    .frame(maxWidth: .infinity, maxHeight: 56)
-                    .overlay{
-                        Label("取貨", systemImage: "barcode.viewfinder")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                    }
-            }
-            .padding(.top)
         }
         .padding(.horizontal, 24)
         .padding(.vertical)
@@ -110,5 +86,5 @@ struct PackageRowDetail: View {
 }
 
 #Preview {
-    PackageRowDetail(package: PackageModel(code: "A10003", timeText: "今天抵達", title: "新竹物流", manager: "XXX", cabinet: "A1", floor: "3", barCode: "1234"))
+    PackageRowDetail(package: PackageModel(state: "bePicked", code: "A10003", timeText: "今天抵達", title: "新竹物流", manager: "XXX", cabinet: "A1", floor: "3", barCode: "1234"))
 }

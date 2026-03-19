@@ -9,19 +9,31 @@ import SwiftUI
 
 struct PackageDetail: View {
     let package: PackageModel
+    @Environment(\.dismiss) private var dismiss
+    @Environment(PackageViewModel.self) var packageVM
     var body: some View {
-        VStack(alignment: .leading, spacing: 16){
-            Text("包裹資訊")
-                .foregroundStyle(Colors.subColor.opacity(0.5))
-            Text("")
-                .foregroundStyle(Colors.subColor.opacity(0.5))
-            
+        VStack(spacing: 16){
+            PackageRowDetail(package: package)
+            Button{
+                packageVM.markAsReceived(packageID: package.id)
+                dismiss()
+            }label: {
+                Text("確認領取")
+                    .bold()
+                    .font(.title2)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 12)
+                    .background(Colors.mainColor)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+            }
         }
         .padding(.horizontal)
     }
 }
 
 #Preview {
-    PackageDetail(package: PackageModel(code: "A10003", timeText: "今天抵達", title: "新竹物流", manager: "XXX", cabinet: "A1", floor: "3", barCode: "1234"))
+    PackageDetail(package: PackageModel(state: "bePicked", code: "A10003", timeText: "今天抵達", title: "新竹物流", manager: "XXX", cabinet: "A1", floor: "3", barCode: "1234"))
+        .environment(PackageViewModel())
 }
 
